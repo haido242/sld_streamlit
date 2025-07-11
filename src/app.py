@@ -103,11 +103,16 @@ ctx = webrtc_streamer(
     rtc_configuration={
         "iceServers": [
             {"urls": ["stun:stun.l.google.com:19302"]},
-            # You can add TURN servers here if needed
+            {
+                "urls": ["turn:global.relay.metered.ca:80", "turn:global.relay.metered.ca:443"],
+                "username": "openai",
+                "credential": "openai123"
+            }
         ]
     },
     async_processing=True,
 )
+
 
 # Cập nhật giao diện từ kết quả xử lý video mỗi 1 giây
 while ctx.state.playing and ctx.video_processor:
