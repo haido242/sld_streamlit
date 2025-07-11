@@ -7,6 +7,7 @@ from collections import deque
 from deploy_model import extract_frame_features, model, label_encoder, THRESHOLD
 import time
 import json
+import asyncio
 
 METADATA_PATH = './data/metadata.json'
 metadata = {}
@@ -125,3 +126,8 @@ while ctx.state.playing and ctx.video_processor:
         if st.session_state.labels:
             result_placeholder.success(f"Nhận diện: {' / '.join(st.session_state.labels)}")
     time.sleep(1)
+
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    asyncio.set_event_loop(asyncio.new_event_loop())
