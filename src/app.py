@@ -105,9 +105,9 @@ ctx = webrtc_streamer(
         "iceServers": [
             {"urls": ["stun:stun.l.google.com:19302"]},
             {
-                "urls": "turn:numb.viagenie.ca",
-                "username": "webrtc@live.com",
-                "credential": "muazkh"
+                "urls": ["turn:global.relay.metered.ca:80", "turn:global.relay.metered.ca:443"],
+                "username": "openai",
+                "credential": "openai123"
             }
         ]
     },
